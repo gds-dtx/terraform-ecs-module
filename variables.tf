@@ -8,6 +8,12 @@ variable "cluster_name" {
   type        = string
 }
 
+variable "subnet_count" {
+  description = "Number of public and private subnets to create"
+  type        = number
+  default     = 2
+}
+
 variable "vpc_cidr_block" {
   description = "CIDR block for the VPC"
   type        = string
