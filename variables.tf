@@ -37,3 +37,9 @@ variable "container_insights" {
   type        = string
   default     = "disabled"
 }
+
+variable "drop_invalid_headers" {
+  description = "Drops invalid headers on the load balancer"
+  type        = bool
+  default     = false
+}

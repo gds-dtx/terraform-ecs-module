@@ -18,11 +18,12 @@ resource "aws_ecs_cluster" "this" {
 }
 
 resource "aws_lb" "this" {
-  name               = "${var.cluster_name}-alb"
-  internal           = false
-  load_balancer_type = "application"
-  subnets            = aws_subnet.public[*].id
-  security_groups    = [aws_security_group.alb.id]
+  name                       = "${var.cluster_name}-alb"
+  internal                   = false
+  load_balancer_type         = "application"
+  subnets                    = aws_subnet.public[*].id
+  security_groups            = [aws_security_group.alb.id]
+  drop_invalid_header_fields = var.drop_invalid_headers
 
   access_logs {
     bucket  = aws_s3_bucket.alb_logs.id
