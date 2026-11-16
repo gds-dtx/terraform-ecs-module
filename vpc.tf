@@ -94,3 +94,10 @@ resource "aws_route_table_association" "private" {
   subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.private[count.index].id
 }
+
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id            = aws_vpc.this.id
+  service_name      = "com.amazonaws.eu-west-2.s3"
+  vpc_endpoint_type = "Gateway"
+  route_table_ids   = aws_route_table.private.*.id
+}
